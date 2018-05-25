@@ -1,1 +1,1 @@
-//Zrobi³em planszê do gry i algorytm który oblicza czy komórka jest ¿ywa czy martwa
+//Zrobi³em planszê do gry i algorytm który oblicza czy komórka jest ¿ywa czy martwa 
