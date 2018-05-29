@@ -2,6 +2,8 @@
 	var start = document.getElementById('start');
 	var stop = document.getElementById('stop');
 	
+	//Dodanie zmiennej do liczenia w przycisku STOP
+	var k=0;
 	//Tablica elementow
 	var tab1=[];
 	//Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
@@ -35,10 +37,20 @@
 	//Funkcja która działa po kliknięciu w przycisk stop
 	stop.onclick = function()
 	{
-		clearInterval(Intgra);
-		clearInterval(Intstan);
-		stop.value="STOP";
-		//stop.id="wznow";
+		if(k%2==0)
+		{
+			clearInterval(Intgra);
+			clearInterval(Intstan);
+			stop.value="WZNÓW";
+			k++;
+		}
+		else
+		{
+			Intgra = window.setInterval (gra, 100);
+			Intstan = window.setInterval (akt_stan, 100);
+			stop.value="STOP";
+			k++;
+		}
 	}
 	
 	//Funkcja tworzaca poczatkowe polozenie zywych komorek
