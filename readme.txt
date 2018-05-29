@@ -13,3 +13,5 @@
 //Naprawiony bug z klawiszem WZNÓW
 
 //Naprawione licznienie kroków 
+
+//Dodano przycisk CZYŒÆ

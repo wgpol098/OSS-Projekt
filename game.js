@@ -1,7 +1,7 @@
-	//Obiekt button-start,stop,wznow
+	//Obiekt button-start,stop,wznow, czyść
 	var start = document.getElementById('start');
 	var stop = document.getElementById('stop');
-	
+	var res = document.getElementById('reset');
 	//Dodanie zmiennej do liczenia w przycisku STOP
 	var k=0;
 	//Tablica elementow
@@ -24,6 +24,7 @@
 	
 	document.querySelector(".container").addEventListener("click",dodaj);
 	
+	//Funkcja zmieniająca stan komórki po kliknięciu
 	function dodaj(e)
 	{
 		let x=parseInt(e.target.id);
