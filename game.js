@@ -29,14 +29,14 @@
 		let x=parseInt(e.target.id);
 		if(tab2[x]==0)
 		{
-			licznik=-1;
+			if(licznik==0) licznik=-1;
 			tab2[x]=1;
 			akt_stan();
 			
 		}			
 		else
 		{
-			licznik=-1;
+			if(licznik==0) licznik=-1;
 			tab2[x]=0;
 			akt_stan();
 		}
@@ -63,6 +63,12 @@
 		clearInterval(Intstan);
 		Intgra = window.setInterval (gra, 100);
 		Intstan = window.setInterval (akt_stan, 100);
+		
+		if(k%2==1)
+		{
+			stop.value="STOP";
+			k++;
+		}
 	}
 	
 	//Funkcja która działa po kliknięciu w przycisk stop
@@ -88,7 +94,6 @@
 	function pocz_zywe()
 	{
 		var ilosc = document.getElementById('ilosc');
-		zer_tab2();
 		
 		//Dodawanie żywych komórek
 		for(i=0;i<ilosc.value;i++)

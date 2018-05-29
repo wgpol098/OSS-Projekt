@@ -9,3 +9,5 @@
 //Dodano funckjê do zerowania tablicy w której podane jest czy komórka jest martwa, czy ¿ywa
 
 //Klikniêcie na element zmienia wartoœæ komórki na ¿ywa/martwa
+
+//Naprawiony bug z klawiszem WZNÓW
