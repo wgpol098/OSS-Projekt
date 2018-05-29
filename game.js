@@ -52,6 +52,17 @@
 			tab2[i]=0;
 		}	
 	}
+	//Funkcja resetująca planszę
+	res.onclick=function()
+	{
+		zer_tab2();
+		licznik=-1;
+		akt_stan();
+		clearInterval(Intgra);
+		clearInterval(Intstan);
+		start.value="START";
+		stop.value="STOP";
+	}
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
 	{

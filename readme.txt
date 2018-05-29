@@ -15,3 +15,5 @@
 //Naprawione licznienie kroków 
 
 //Dodano przycisk CZYŒÆ
+
+//Dodano funkcjê do przycisku CZYŒÆ
