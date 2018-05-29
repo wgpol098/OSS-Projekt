@@ -1,4 +1,4 @@
-window.onresize()
+window.onresize= function()
 {
 	
 }

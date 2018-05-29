@@ -3,3 +3,5 @@
 //Dodanie t³a, dodanie nowej czcionki, stworzenie i dodanie licznika kroków , dodanie przycisku STOP
 
 //Przycisk STOP po wciœniêciu staje siê przyciskiem WZNÓW
+
+//Wyœwietlanie planszy przed rozpoczêciem gry

@@ -12,11 +12,35 @@
 	var tab3=[];
 	
 	//Licznik kroków 
-	var licznik;
+	var licznik=0;
 	
 	//Interwały
 	var Intgra;
 	var Intstan;
+	
+	//Utworzenie planszy
+	tworz_plansza();
+	
+	var c_zywa=document.querySelector('.container');
+	c_zywa.addEventListener("click",dodaj);
+	for(i=0;i<627;i++)
+	{
+		tab2[i]=0;
+	}
+	
+	function dodaj(e)
+	{
+		let x=parseInt(e.id);
+		if(tab2[x]==0)
+		{
+			tab2[x]=1;
+			akt_stan();
+		}			
+		else(tab2[x]==1)
+		{
+			tab2[x]=0;
+		}
+	}
 	
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
@@ -24,8 +48,8 @@
 		start.value="RESTART";
 		//Zerowanie licznika
 		licznik=0;
-		document.querySelector('.container').innerHTML="";
-		tworz_plansza();
+		//document.querySelector('.container').innerHTML="";
+		//tworz_plansza();
 		pocz_zywe();
 		//gra();
 		clearInterval(Intgra);
