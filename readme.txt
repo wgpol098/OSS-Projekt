@@ -5,3 +5,5 @@
 //Przycisk STOP po wciœniêciu staje siê przyciskiem WZNÓW
 
 //Wyœwietlanie planszy przed rozpoczêciem gry
+
+//Dodano funckjê do zerowania tablicy w której podane jest czy komórka jest martwa, czy ¿ywa

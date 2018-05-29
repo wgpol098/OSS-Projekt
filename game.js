@@ -23,10 +23,8 @@
 	
 	var c_zywa=document.querySelector('.container');
 	c_zywa.addEventListener("click",dodaj);
-	for(i=0;i<627;i++)
-	{
-		tab2[i]=0;
-	}
+	zer_tab2();
+
 	
 	function dodaj(e)
 	{
@@ -41,7 +39,14 @@
 			tab2[x]=0;
 		}
 	}
-	
+	//Funckja czyszcząca tablicę 2
+	function zer_tab2()
+	{
+		for(i=0;i<627;i++)
+		{
+			tab2[i]=0;
+		}	
+	}
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
 	{
@@ -81,12 +86,7 @@
 	function pocz_zywe()
 	{
 		var ilosc = document.getElementById('ilosc');
-		
-		//Zerowanie tablicy, że martwe
-		for(i=0;i<627;i++)
-		{
-			tab2[i]=0;
-		}
+		zer_tab2();
 		
 		//Dodawanie żywych komórek
 		for(i=0;i<ilosc.value;i++)
