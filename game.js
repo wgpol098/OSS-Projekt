@@ -20,23 +20,25 @@
 	
 	//Utworzenie planszy
 	tworz_plansza();
-	
-	var c_zywa=document.querySelector('.container');
-	c_zywa.addEventListener("click",dodaj);
 	zer_tab2();
-
+	
+	document.querySelector(".container").addEventListener("click",dodaj);
 	
 	function dodaj(e)
 	{
-		let x=parseInt(e.id);
+		let x=parseInt(e.target.id);
 		if(tab2[x]==0)
 		{
+			licznik=-1;
 			tab2[x]=1;
 			akt_stan();
+			
 		}			
-		else(tab2[x]==1)
+		else
 		{
+			licznik=-1;
 			tab2[x]=0;
+			akt_stan();
 		}
 	}
 	//Funckja czyszcząca tablicę 2
