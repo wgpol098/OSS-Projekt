@@ -11,3 +11,5 @@
 //Klikniêcie na element zmienia wartoœæ komórki na ¿ywa/martwa
 
 //Naprawiony bug z klawiszem WZNÓW
+
+//Naprawione licznienie kroków 

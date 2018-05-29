@@ -30,6 +30,7 @@
 		if(tab2[x]==0)
 		{
 			if(licznik==0) licznik=-1;
+			else licznik--;
 			tab2[x]=1;
 			akt_stan();
 			
@@ -37,6 +38,7 @@
 		else
 		{
 			if(licznik==0) licznik=-1;
+			else licznik--;
 			tab2[x]=0;
 			akt_stan();
 		}
