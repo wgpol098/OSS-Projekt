@@ -39,8 +39,6 @@
 			else licznik--;
 			tab2[x]=1;
 			akt_stan();
-			licznik_zyw++;
-			licznik_martw--;
 			
 		}			
 		else
@@ -49,8 +47,6 @@
 			else licznik--;
 			tab2[x]=0;
 			akt_stan();
-			licznik_zyw--;
-			licznik_martw++;
 		}
 	}
 	//Funckja czyszcząca tablicę 2
@@ -172,8 +168,16 @@
 		//Plansza
 		for(i=0;i<627;i++)
 		{
-			if(tab2[i]==1) tab1[i].style.backgroundColor="blue";
-			else tab1[i].style.backgroundColor="white";
+			if(tab2[i]==1)
+			{
+				tab1[i].style.backgroundColor="blue";
+				licznik_zyw++;
+			}				
+			else
+			{
+				tab1[i].style.backgroundColor="white";
+				licznik_martw++;
+			}				
 		}
 		
 		//Liczniki
@@ -182,7 +186,7 @@
 		licz.innerText="Krok "+licznik;
 		
 		var licz_martwe=document.querySelector('.martwe');
-		licz_martwe.innerText="Żywe: "+licznik_martw;
+		licz_martwe.innerText="Martwe: "+licznik_martw;
 	}
 	
 	//Funkcja zapetlajaca gre 
