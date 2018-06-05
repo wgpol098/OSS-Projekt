@@ -49,6 +49,24 @@
 	height:20%;
 	width:60%;
 }
+.zywe
+{
+	float:left;
+	padding:1px;
+	margin-left:20%;
+}
+.licznik
+{
+	float:left;
+	padding:1px;
+	margin-left:25%;
+}
+.martwe
+{
+	float:left;
+	padding:1px;
+	margin-left:20%;
+}
 .container
 {
 	margin-top:10px;
@@ -57,8 +75,8 @@
 .komorka
 {
 	float:left;
-	width:0.15%;
-	height:0.15%;
+	width:1px;
+	height:1px;
 	border: 1px solid black;
 	border-radius: 100%;
 	margin:1px;
