@@ -19,3 +19,7 @@
 //Dodano funkcjê do przycisku CZYŒÆ
 
 //Dodawanie licznika zywych i martwych komorek
+
+//Stworzenie podstrony z informacjami o grze
+
+//Przygotowanie projektu do stworzenia planszy z trzema kolorami komórek
