@@ -1,27 +1,27 @@
 	//Obiekt button-start,stop,wznow, czyść
-	var start = document.getElementById('start');
-	var stop = document.getElementById('stop');
-	var res = document.getElementById('reset');
+	const start = document.getElementById('start');
+	const stop = document.getElementById('stop');
+	const res = document.getElementById('reset');
 	//Dodanie zmiennej do liczenia w przycisku STOP
-	var k=0;
+	let k=0;
 	//Tablica elementow
-	var tab1=[];
+	let tab1=[];
 	//Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
-	var tab2=[];
+	let tab2=[];
 	//Tablica temp
-	var tab3=[];
+	let tab3=[];
 	
 	//Licznik kroków 
-	var licznik=0;
+	let licznik=0;
 	
 	//Licznik żywych i martwych elementów
-	var licznik_zyw=0;
-	var licznik_martw=627;
+	let licznik_zyw=0;
+	let licznik_martw=627;
 	
 	
 	//Interwały
-	var Intgra;
-	var Intstan;
+	let Intgra;
+	let Intstan;
 	
 	//Utworzenie planszy
 	tworz_plansza();
@@ -113,12 +113,12 @@
 	//Funkcja tworzaca poczatkowe polozenie zywych komorek
 	function pocz_zywe()
 	{
-		var ilosc = document.getElementById('ilosc');
+		let ilosc = document.getElementById('ilosc');
 		
 		//Dodawanie żywych komórek
 		for(i=0;i<ilosc.value;i++)
 		{
-			var x = losuj_zywa();
+			let x = losuj_zywa();
 			if(tab2[x]==1) i--;
 			else
 			{
@@ -141,15 +141,15 @@
 	function tworz_plansza()
 	{
 		//Liczniki
-		var licz=document.querySelector('.licznik');
-		let licz_zywe=document.querySelector('.zywe');
-		let licz_martwe=document.querySelector('.martwe');
+		const licz=document.querySelector('.licznik');
+		const licz_zywe=document.querySelector('.zywe');
+		const licz_martwe=document.querySelector('.martwe');
 		licz_zywe.innerText="Żywe: "+licznik_zyw;
 		licz_martwe.innerText="Martwe: "+licznik_martw;
 		licz.innerText="Krok: "+licznik;
 		
 		//Plansza
-		var plansza = document.querySelector('.container');
+		const plansza = document.querySelector('.container');
 		for(i=0;i<627;i++)
 		{			
 			tab1[i]=document.createElement('div');
@@ -182,13 +182,13 @@
 		
 		//Liczniki
 		licznik++;
-		var licz=document.querySelector('.licznik');
+		const licz=document.querySelector('.licznik');
 		licz.innerText="Krok "+licznik;
 		
-		var licz_martwe=document.querySelector('.martwe');
+		const licz_martwe=document.querySelector('.martwe');
 		licz_martwe.innerText="Martwe: "+licznik_martw;
 		
-		var licz_zywe=document.querySelector('.zywe');
+		const licz_zywe=document.querySelector('.zywe');
 		licz_zywe.innerText="Żywe: "+licznik_zyw;
 	}
 	
@@ -200,7 +200,7 @@
 		for(i=0;i<627;i++)
 		{
 		
-			var zywa=0;
+			let zywa=0;
 			
 			//Lewy gorny rog
 			if(i==0)
