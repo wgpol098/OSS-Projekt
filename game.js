@@ -187,6 +187,9 @@
 		
 		var licz_martwe=document.querySelector('.martwe');
 		licz_martwe.innerText="Martwe: "+licznik_martw;
+		
+		var licz_zywe=document.querySelector('.zywe');
+		licz_zywe.innerText="Żywe: "+licznik_zyw;
 	}
 	
 	//Funkcja zapetlajaca gre 
