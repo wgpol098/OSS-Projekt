@@ -14,6 +14,9 @@
 	//Licznik kroków 
 	var licznik=0;
 	
+	//Licznik żywych elementów
+	var licznik_zyw=0;
+	
 	//Interwały
 	var Intgra;
 	var Intstan;
@@ -34,6 +37,7 @@
 			else licznik--;
 			tab2[x]=1;
 			akt_stan();
+			licznik_zyw++;
 			
 		}			
 		else
@@ -42,6 +46,7 @@
 			else licznik--;
 			tab2[x]=0;
 			akt_stan();
+			licznik_zyw--;
 		}
 	}
 	//Funckja czyszcząca tablicę 2
@@ -62,6 +67,7 @@
 		clearInterval(Intstan);
 		start.value="START";
 		stop.value="STOP";
+		document.getElementById('ilosc').value="";
 	}
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
