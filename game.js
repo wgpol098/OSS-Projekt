@@ -17,22 +17,23 @@
  //Licznik żywych i martwych elementów
  let licznik_zyw=0;
  let licznik_martw=627;
-	
-	
-	//Interwały
-	let Intgra;
-	let Intstan;
+ 
+ 
+ //Interwały
+ let Intgra;
+ let Intstan;
 	
 	//Utworzenie planszy
 	tworz_plansza();
 	zer_tab2();
 	
-	//Zdarzenie 
+	//Zdarzenie kliknięcia
 	document.querySelector(".container").addEventListener("click",dodaj);
 	
-	//Funkcja zmieniająca stan komórki po kliknięciu
+	//Funkcja zmieniająca stan komórki po kliknięciu na żywy lub martwy
 	function dodaj(e)
 	{
+		//Jeżeli komórka, którą klikneliśmy była martwa to stanie się żywa
 		let x=parseInt(e.target.id);
 		if(tab2[x]===0)
 		{
@@ -41,7 +42,8 @@
 			tab2[x]=1;
 			akt_stan();
 			
-		}			
+		}
+		//Jeżeli komórka, którą kliknęliśmy była żywa to staje się martwa
 		else
 		{
 			if(licznik===0) licznik=-1;
@@ -50,7 +52,8 @@
 			akt_stan();
 		}
 	}
-	//Funckja czyszcząca tablicę 2
+	//Funckja czyszcząca tablicę 2, czyli przechowującą informację czy komórka jest żywa czy martwa 
+	//Ustawiamy stan wszystkich komórek na martwy
 	function zer_tab2()
 	{
 		for(let i=0;i<627;i++)
