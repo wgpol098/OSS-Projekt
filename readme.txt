@@ -17,3 +17,5 @@
 //Dodano przycisk CZYŒÆ
 
 //Dodano funkcjê do przycisku CZYŒÆ
+
+//Dodawanie licznika zywych i martwych komorek
