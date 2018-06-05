@@ -1,22 +1,22 @@
-	//Obiekt button-start,stop,wznow, czyść
-	const start = document.getElementById('start');
-	const stop = document.getElementById('stop');
-	const res = document.getElementById('reset');
-	//Dodanie zmiennej do liczenia w przycisku STOP
-	let k=0;
-	//Tablica elementow
-	let tab1=[];
-	//Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
-	let tab2=[];
-	//Tablica temp
-	let tab3=[];
-	
-	//Licznik kroków 
-	let licznik=0;
-	
-	//Licznik żywych i martwych elementów
-	let licznik_zyw=0;
-	let licznik_martw=627;
+ //Obiekt button-start,stop,wznow, czyść
+ const start = document.getElementById('start');
+ const stop = document.getElementById('stop');
+ const res = document.getElementById('reset');
+ //Dodanie zmiennej do liczenia w przycisku STOP
+ let k=0;
+ //Tablica elementow
+ let tab1=[];
+ //Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
+ let tab2=[];
+ //Tablica temp
+ let tab3=[];
+ 
+ //Licznik kroków 
+ let licznik=0;
+ 
+ //Licznik żywych i martwych elementów
+ let licznik_zyw=0;
+ let licznik_martw=627;
 	
 	
 	//Interwały
@@ -27,15 +27,16 @@
 	tworz_plansza();
 	zer_tab2();
 	
+	//Zdarzenie 
 	document.querySelector(".container").addEventListener("click",dodaj);
 	
 	//Funkcja zmieniająca stan komórki po kliknięciu
 	function dodaj(e)
 	{
 		let x=parseInt(e.target.id);
-		if(tab2[x]==0)
+		if(tab2[x]===0)
 		{
-			if(licznik==0) licznik=-1;
+			if(licznik===0) licznik=-1;
 			else licznik--;
 			tab2[x]=1;
 			akt_stan();
@@ -43,7 +44,7 @@
 		}			
 		else
 		{
-			if(licznik==0) licznik=-1;
+			if(licznik===0) licznik=-1;
 			else licznik--;
 			tab2[x]=0;
 			akt_stan();
@@ -52,7 +53,7 @@
 	//Funckja czyszcząca tablicę 2
 	function zer_tab2()
 	{
-		for(i=0;i<627;i++)
+		for(let i=0;i<627;i++)
 		{
 			tab2[i]=0;
 		}	
@@ -94,7 +95,7 @@
 	//Funkcja która działa po kliknięciu w przycisk stop
 	stop.onclick = function()
 	{
-		if(k%2==0)
+		if(k%2===0)
 		{
 			clearInterval(Intgra);
 			clearInterval(Intstan);
@@ -116,7 +117,7 @@
 		let ilosc = document.getElementById('ilosc');
 		
 		//Dodawanie żywych komórek
-		for(i=0;i<ilosc.value;i++)
+		for(let i=0;i<ilosc.value;i++)
 		{
 			let x = losuj_zywa();
 			if(tab2[x]==1) i--;
@@ -150,7 +151,7 @@
 		
 		//Plansza
 		const plansza = document.querySelector('.container');
-		for(i=0;i<627;i++)
+		for(let i=0;i<627;i++)
 		{			
 			tab1[i]=document.createElement('div');
 			tab1[i].id=i;
@@ -166,7 +167,7 @@
 		licznik_martw=0;
 		licznik_zyw=0;
 		//Plansza
-		for(i=0;i<627;i++)
+		for(let i=0;i<627;i++)
 		{
 			if(tab2[i]==1)
 			{
@@ -197,13 +198,13 @@
 	{
 		//Rogi sprawdź lewą stronę
 		//Obliczanie ile żywych komórek jest wokół komórki
-		for(i=0;i<627;i++)
+		for(let i=0;i<627;i++)
 		{
 		
 			let zywa=0;
 			
 			//Lewy gorny rog
-			if(i==0)
+			if(i===0)
 			{
 				if(tab2[1]==1) zywa++;
 				if(tab2[33]==1) zywa++;
@@ -258,7 +259,7 @@
 			}
 			else
 			{
-			if(i!=0&&i<32)
+			if(i!==0&&i<32)
 			{
 				if(tab2[593+i]==1) zywa++;
 				if(tab2[594+i]==1) zywa++;
@@ -296,7 +297,7 @@
 						if(tab2[i-32]==1) zywa++;
 						if(tab2[i-32-33]==1) zywa++;
 					}
-					if(i%33==0)
+					if(i%33===0)
 					{
 						if(tab2[i-33]==1) zywa++;
 						if(tab2[i+33]==1) zywa++;
@@ -307,7 +308,7 @@
 						if(tab2[i-1]==1) zywa++;
 						if(tab2[i+32+33]==1) zywa++;
 					}
-					if(i%33!=0&&i%33!=32)
+					if(i%33!==0&&i%33!=32)
 					{
 						if(tab2[i-34]==1) zywa++;
 						if(tab2[i-33]==1) zywa++;
@@ -328,7 +329,7 @@
 
 			
 			//reguły
-			if(tab2[i]==0)
+			if(tab2[i]===0)
 			{
 				if(zywa==3) tab3[i]=1;
 				else tab3[i]=0;
@@ -341,7 +342,7 @@
 		}
 		
 		//Kopiowanie do tab2
-		for(i=0;i<627;i++)
+		for(let i=0;i<627;i++)
 		{
 			tab2[i]=tab3[i];
 		}
