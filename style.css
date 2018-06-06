@@ -1,6 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css?family=Play');
 
+#menu
+{
+	font-family: 'Play', sans-serif;
+	margin:20px;
+	font-size:15px;
+	border-radius:10px;
+	padding:5px;
+	background-color:blue;
+	width:150px;
+}
 #ilosc
 {
 	width:20%;
@@ -82,7 +92,6 @@
 	margin:1px;
 	padding: 10px;
 }
-
 body
 {
 	background-image: url(bg.jpg);
@@ -90,5 +99,10 @@ body
 	background-repeat: no-repeat;
 	font-family: 'Play', sans-serif;
 	color:white;
+}
+
+a
+{
+	text-decoration:none;
 }
 
