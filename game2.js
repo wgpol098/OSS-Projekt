@@ -23,6 +23,9 @@
  let Intgra;
  let Intstan;
 	
+//Zmienna przechowująca dane o tym, czy plansza jest startowana czy restartowana
+let r=0;
+
 	//Utworzenie planszy
 	tworz_plansza();
 	zer_tab2();
@@ -52,15 +55,6 @@
 			akt_stan();
 		}
 	}
-	//Funckja czyszcząca tablicę 2, czyli przechowującą informację czy komórka jest żywa czy martwa 
-	//Ustawiamy stan wszystkich komórek na martwy
-	function zer_tab2()
-	{
-		for(let i=0;i<627;i++)
-		{
-			tab2[i]=0;
-		}	
-	}
 	//Funkcja resetująca planszę
 	res.onclick=function()
 	{
@@ -76,22 +70,53 @@
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
 	{
-		start.value="RESTART";
-		//Zerowanie licznika
-		licznik=0;
-		//document.querySelector('.container').innerHTML="";
-		//tworz_plansza();
-		pocz_zywe();
-		//gra();
-		clearInterval(Intgra);
-		clearInterval(Intstan);
-		Intgra = window.setInterval (gra, 100);
-		Intstan = window.setInterval (akt_stan, 100);
-		
-		if(k%2==1)
+		if(r===0)
 		{
-			stop.value="STOP";
-			k++;
+			start.value="RESTART";
+			//Zerowanie licznika
+			licznik=0;
+			//document.querySelector('.container').innerHTML="";
+			//tworz_plansza();
+			pocz_zywe();
+			//gra();
+			clearInterval(Intgra);
+			clearInterval(Intstan);
+			Intgra = window.setInterval (gra, 100);
+			Intstan = window.setInterval (akt_stan, 100);
+		
+			if(k%2==1)
+			{
+				stop.value="STOP";
+				k++;
+			}
+			
+			r++;
+		}
+		else
+		{
+			start.value="RESTART";
+			//Zerowanie licznika
+			licznik=0;
+			//document.querySelector('.container').innerHTML="";
+			//tworz_plansza();
+			clearInterval(Intgra);
+			clearInterval(Intstan);
+			zer_tab2();
+			gra();
+			akt_stan();
+			pocz_zywe();
+			//gra();
+			
+			Intgra = window.setInterval (gra, 100);
+			Intstan = window.setInterval (akt_stan, 100);
+		
+			if(k%2==1)
+			{
+				stop.value="STOP";
+				k++;
+			}
+			
+			r++;
 		}
 	}
 	
