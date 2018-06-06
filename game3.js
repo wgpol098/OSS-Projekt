@@ -165,13 +165,6 @@
 		licznik_zyw=licznik_zyw+ilosc;
 		licznik_martw=licznik_martw-ilosc;
 	}
-	
-	//Funkcja losująca w której komórce ma być komórka żywa
-	function losuj_zywa()
-	{
-		return Math.floor(Math.random()*627);
-	}
-	
 	//Funkcja tworząca divy, czyli plansze
 	function tworz_plansza()
 	{
@@ -464,8 +457,7 @@
 			{
 				if(zr+zy==3||zr+zy==2)
 				{
-					if(zr>zy) tab3[i]=1;
-					else tab3[i]=2;
+					tab3[i]=tab2[i];
 				}					
 				else tab3[i]=0;
 			}
