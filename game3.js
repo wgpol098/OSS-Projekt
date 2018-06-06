@@ -3,6 +3,17 @@
  const stop = document.getElementById('stop');
  const res = document.getElementById('reset');
  //Dodanie zmiennej do liczenia w przycisku STOP
+ 
+ 
+ 
+ 
+ //Jak klikasz restart to musi czyścić plansze 
+ //ZRÓB TO!!!
+ 
+ 
+ 
+ 
+ 
  let k=0;
  //Tablica elementow
  let tab1=[];
@@ -442,12 +453,20 @@
 			//Algorytm 
 			if(tab2[i]===0)
 			{
-				if(zr+zy==3) tab3[i]=1;
+				if(zr+zy==3)
+				{
+					if(zr>zy) tab3[i]=1;
+					else tab3[i]=2;
+				}					
 				else tab3[i]=0;
 			}
 			else
 			{
-				if(zr+zy==3||zr+zy==2) tab3[i]=1;
+				if(zr+zy==3||zr+zy==2)
+				{
+					if(zr>zy) tab3[i]=1;
+					else tab3[i]=2;
+				}					
 				else tab3[i]=0;
 			}
 		}
