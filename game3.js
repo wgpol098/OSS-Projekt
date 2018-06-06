@@ -229,123 +229,206 @@
 		for(let i=0;i<627;i++)
 		{
 		
-			let zywa=0;
-			
+			//Zmienne przechowujące jaki kolor ma dana komórka
+			let zr=0;
+			let zy=0;
 			//Lewy gorny rog
 			if(i===0)
 			{
-				if(tab2[1]==1) zywa++;
-				if(tab2[33]==1) zywa++;
-				if(tab2[34]==1) zywa++;
-				if(tab2[32]==1) zywa++;
-				if(tab2[32+33]==1) zywa++;
-				if(tab2[594]==1) zywa++;
-				if(tab2[595]==1) zywa++;
-				if(tab2[594+32]==1) zywa++;
+				if(tab2[1]==1)  zr++;
+				if(tab2[33]==1)  zr++;
+				if(tab2[34]==1)  zr++;
+				if(tab2[32]==1)  zr++;
+				if(tab2[32+33]==1)  zr++;
+				if(tab2[594]==1)  zr++;
+				if(tab2[595]==1)  zr++;
+				if(tab2[594+32]==1)  zr++;
+				
+				if(tab2[1]==2)  zy++;
+				if(tab2[33]==2)  zy++;
+				if(tab2[34]==2)  zy++;
+				if(tab2[32]==2)  zy++;
+				if(tab2[32+33]==2)  zy++;
+				if(tab2[594]==2)  zy++;
+				if(tab2[595]==2)  zy++;
+				if(tab2[594+32]==2)  zy++;
+
 			}
 			else
 			{
 			//Prawy górny róg
 			if(i==32)
 			{
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i+33]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[33]==1) zywa++;
-				if(tab2[594]==1) zywa++;
-				if(tab2[594+32]==1) zywa++;
-				if(tab2[594+31]==1) zywa++;
+				if(tab2[i-1]==1)  zr++;
+				if(tab2[i+33]==1)  zr++;
+				if(tab2[i+32]==1)  zr++;
+				if(tab2[0]==1)  zr++;
+				if(tab2[33]==1)  zr++;
+				if(tab2[594]==1)  zr++;
+				if(tab2[594+32]==1)  zr++;
+				if(tab2[594+31]==1)  zr++;
+				
+				if(tab2[i-1]==2)  zy++;
+				if(tab2[i+33]==2)  zy++;
+				if(tab2[i+32]==2)  zy++;
+				if(tab2[0]==2)  zy++;
+				if(tab2[33]==2)  zy++;
+				if(tab2[594]==2)  zy++;
+				if(tab2[594+32]==2)  zy++;
+				if(tab2[594+31]==2)  zy++;
 			}
 			else
 			{
 			//Prawy dolny róg
 			if(i==594)
 			{
-				if(tab2[i+1]==1) zywa++;
-				if(tab2[i-33]==1) zywa++;
-				if(tab2[i-32]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[32]==1) zywa++;
-				if(tab2[1]==1) zywa++;
-				if(tab2[i-1]==1) zywa++;
+				if(tab2[i+1]==1)  zr++;
+				if(tab2[i-33]==1)  zr++;
+				if(tab2[i-32]==1)  zr++;
+				if(tab2[0]==1)  zr++;
+				if(tab2[i+32]==1)  zr++;
+				if(tab2[32]==1)  zr++;
+				if(tab2[1]==1)  zr++;
+				if(tab2[i-1]==1)  zr++;
+				
+				if(tab2[i+1]==2)  zy++;
+				if(tab2[i-33]==2)  zy++;
+				if(tab2[i-32]==2)  zy++;
+				if(tab2[0]==2)  zy++;
+				if(tab2[i+32]==2)  zy++;
+				if(tab2[32]==2)  zy++;
+				if(tab2[1]==2)  zy++;
+				if(tab2[i-1]==2)  zy++;
 			}
 			else
 			{
 			//Lewy dolny róg
 			if(i==626)
 			{
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i-33]==1) zywa++;
-				if(tab2[i-34]==1) zywa++;
-				if(tab2[i-32]==1) zywa++;
-				if(tab2[i-32-33]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[32]==1) zywa++;
-				if(tab2[31]==1) zywa++;
+				if(tab2[i-1]==1)  zr++;
+				if(tab2[i-33]==1)  zr++;
+				if(tab2[i-34]==1)  zr++;
+				if(tab2[i-32]==1)  zr++;
+				if(tab2[i-32-33]==1)  zr++;
+				if(tab2[0]==1)  zr++;
+				if(tab2[32]==1)  zr++;
+				if(tab2[31]==1)  zr++;
+				
+				if(tab2[i-1]==2)  zy++;
+				if(tab2[i-33]==2)  zy++;
+				if(tab2[i-34]==2)  zy++;
+				if(tab2[i-32]==2)  zy++;
+				if(tab2[i-32-33]==2)  zy++;
+				if(tab2[0]==2)  zy++;
+				if(tab2[32]==2)  zy++;
+				if(tab2[31]==2)  zy++;
 			}
 			else
 			{
 			if(i!==0&&i<32)
 			{
-				if(tab2[593+i]==1) zywa++;
-				if(tab2[594+i]==1) zywa++;
-				if(tab2[595+i]==1) zywa++;
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i+1]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[i+33]==1) zywa++;
-				if(tab2[i+34]==1) zywa++;				
+				if(tab2[593+i]==1)  zr++;
+				if(tab2[594+i]==1)  zr++;
+				if(tab2[595+i]==1)  zr++;
+				if(tab2[i-1]==1)  zr++;
+				if(tab2[i+1]==1)  zr++;
+				if(tab2[i+32]==1)  zr++;
+				if(tab2[i+33]==1)  zr++;
+				if(tab2[i+34]==1)  zr++;
+
+				if(tab2[593+i]==2)  zy++;
+				if(tab2[594+i]==2)  zy++;
+				if(tab2[595+i]==2)  zy++;
+				if(tab2[i-1]==2)  zy++;
+				if(tab2[i+1]==2)  zy++;
+				if(tab2[i+32]==2)  zy++;
+				if(tab2[i+33]==2)  zy++;
+				if(tab2[i+34]==2)  zy++;
 			}
 			else
 			{
 				//Sprawdź lepiej to
 				if(i>594)
 				{
-					if(tab2[i-34]==1) zywa++;
-					if(tab2[i-33]==1) zywa++;
-					if(tab2[i-32]==1) zywa++;
-					if(tab2[i-1]==1) zywa++;
-					if(tab2[i+1]==1) zywa++;
-					if(tab2[i%33]==1) zywa++;
-					if(tab2[i%33+1]==1) zywa++;
-					if(tab2[i%33-1]==1) zywa++;						
+					if(tab2[i-34]==1)  zr++;
+					if(tab2[i-33]==1)  zr++;
+					if(tab2[i-32]==1)  zr++;
+					if(tab2[i-1]==1)  zr++;
+					if(tab2[i+1]==1)  zr++;
+					if(tab2[i%33]==1)  zr++;
+					if(tab2[i%33+1]==1)  zr++;
+					if(tab2[i%33-1]==1)  zr++;	
+
+					if(tab2[i-34]==2)  zy++;
+					if(tab2[i-33]==2)  zy++;
+					if(tab2[i-32]==2)  zy++;
+					if(tab2[i-1]==2)  zy++;
+					if(tab2[i+1]==2)  zy++;
+					if(tab2[i%33]==2)  zy++;
+					if(tab2[i%33+1]==2)  zy++;
+					if(tab2[i%33-1]==2)  zy++;	
 				}
 				else
 				{
 					if(i%33==32)
 					{
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i-34]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
-						if(tab2[i+1]==1) zywa++;
-						if(tab2[i-32]==1) zywa++;
-						if(tab2[i-32-33]==1) zywa++;
+						if(tab2[i-33]==1)  zr++;
+						if(tab2[i+33]==1)  zr++;
+						if(tab2[i-34]==1)  zr++;
+						if(tab2[i+32]==1)  zr++;
+						if(tab2[i-1]==1)  zr++;
+						if(tab2[i+1]==1)  zr++;
+						if(tab2[i-32]==1)  zr++;
+						if(tab2[i-32-33]==1)  zr++;
+						
+						if(tab2[i-33]==2)  zy++;
+						if(tab2[i+33]==2)  zy++;
+						if(tab2[i-34]==2)  zy++;
+						if(tab2[i+32]==2)  zy++;
+						if(tab2[i-1]==2)  zy++;
+						if(tab2[i+1]==2)  zy++;
+						if(tab2[i-32]==2)  zy++;
+						if(tab2[i-32-33]==2)  zy++;
 					}
 					if(i%33===0)
 					{
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i+34]==1) zywa++;
-						if(tab2[i-32]==1) zywa++;
-						if(tab2[i+1]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
-						if(tab2[i+32+33]==1) zywa++;
+						if(tab2[i-33]==1)  zr++;
+						if(tab2[i+33]==1)  zr++;
+						if(tab2[i+34]==1)  zr++;
+						if(tab2[i-32]==1)  zr++;
+						if(tab2[i+1]==1)  zr++;
+						if(tab2[i+32]==1)  zr++;
+						if(tab2[i-1]==1)  zr++;
+						if(tab2[i+32+33]==1)  zr++;
+						
+						if(tab2[i-33]==2)  zy++;
+						if(tab2[i+33]==2)  zy++;
+						if(tab2[i+34]==2)  zy++;
+						if(tab2[i-32]==2)  zy++;
+						if(tab2[i+1]==2)  zy++;
+						if(tab2[i+32]==2)  zy++;
+						if(tab2[i-1]==2)  zy++;
+						if(tab2[i+32+33]==2)  zy++;
 					}
 					if(i%33!==0&&i%33!=32)
 					{
-						if(tab2[i-34]==1) zywa++;
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i-32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
-						if(tab2[i+1]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i+34]==1) zywa++;
+						if(tab2[i-34]==1)  zr++;
+						if(tab2[i-33]==1)  zr++;
+						if(tab2[i-32]==1)  zr++;
+						if(tab2[i-1]==1)  zr++;
+						if(tab2[i+1]==1)  zr++;
+						if(tab2[i+32]==1)  zr++;
+						if(tab2[i+33]==1)  zr++;
+						if(tab2[i+34]==1)  zr++;
+						
+						if(tab2[i-34]==2)  zy++;
+						if(tab2[i-33]==2)  zy++;
+						if(tab2[i-32]==2)  zy++;
+						if(tab2[i-1]==2)  zy++;
+						if(tab2[i+1]==2)  zy++;
+						if(tab2[i+32]==2)  zy++;
+						if(tab2[i+33]==2)  zy++;
+						if(tab2[i+34]==2)  zy++;
 					}				
 				}
 		
@@ -356,15 +439,15 @@
 			}
 
 			
-			//reguły
+			//Algorytm 
 			if(tab2[i]===0)
 			{
-				if(zywa==3) tab3[i]=1;
+				if(zr+zy==3) tab3[i]=1;
 				else tab3[i]=0;
 			}
 			else
 			{
-				if(zywa==3||zywa==2) tab3[i]=1;
+				if(zr+zy==3||zr+zy==2) tab3[i]=1;
 				else tab3[i]=0;
 			}
 		}
