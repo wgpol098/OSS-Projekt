@@ -46,10 +46,21 @@
 		//Jeżeli komórka, którą kliknęliśmy była żywa to staje się martwa
 		else
 		{
-			if(licznik===0) licznik=-1;
-			else licznik--;
-			tab2[x]=0;
-			akt_stan();
+			if(tab2[x]===1)
+			{
+				if(licznik===0) licznik=-1;
+				else licznik--;
+				tab2[x]=2;
+				akt_stan();
+			}
+			else
+			{
+				if(licznik===0) licznik=-1;
+				else licznik--;
+				tab2[x]=0;
+				akt_stan();
+			}
+			
 		}
 	}
 	//Funckja czyszcząca tablicę 2, czyli przechowującą informację czy komórka jest żywa czy martwa 
@@ -126,8 +137,17 @@
 			if(tab2[x]==1) i--;
 			else
 			{
-				tab2[x]=1;
-				tab1[x].style.backgroundColor="blue";
+				let kolor = losuj_zywa();
+				if(kolor>627/2)
+				{
+					tab2[x]=1;
+					tab1[x].style.backgroundColor="red";
+				}
+				else
+				{
+					tab2[x]=2;
+					tab1[x].style.backgroundColor="yellow";
+				}
 			}
 		}	
 		//Licznik żywych komórek
@@ -172,16 +192,21 @@
 		//Plansza
 		for(let i=0;i<627;i++)
 		{
-			if(tab2[i]==1)
-			{
-				tab1[i].style.backgroundColor="blue";
-				licznik_zyw++;
-			}				
-			else
+			if(tab2[i]==0)
 			{
 				tab1[i].style.backgroundColor="white";
 				licznik_martw++;
+			}
+			if(tab2[i]==1)
+			{
+				tab1[i].style.backgroundColor="red";
+				licznik_zyw++;
 			}				
+			if(tab2[i]==2)
+			{
+				tab1[i].style.backgroundColor="yellow";
+				licznik_zyw++;
+			}
 		}
 		
 		//Liczniki
