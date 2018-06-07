@@ -10,6 +10,8 @@
  let tab2=[];
  //Tablica temp
  let tab3=[];
+ //Tablica licząca ile cyklów żyje dana komórka
+ let tab4=[];
  
  //Licznik kroków 
  let licznik=0;
@@ -168,29 +170,6 @@ let r=0;
 		//Licznik żywych komórek
 		licznik_zyw=licznik_zyw+ilosc;
 		licznik_martw=licznik_martw-ilosc;
-	}
-	
-	//Funkcja tworząca divy, czyli plansze
-	function tworz_plansza()
-	{
-		//Liczniki
-		const licz=document.querySelector('.licznik');
-		const licz_zywe=document.querySelector('.zywe');
-		const licz_martwe=document.querySelector('.martwe');
-		licz_zywe.innerText="Żywe: "+licznik_zyw;
-		licz_martwe.innerText="Martwe: "+licznik_martw;
-		licz.innerText="Krok: "+licznik;
-		
-		//Plansza
-		const plansza = document.querySelector('.container');
-		for(let i=0;i<627;i++)
-		{			
-			tab1[i]=document.createElement('div');
-			tab1[i].id=i;
-			tab1[i].className="komorka";			
-			tab1[i].style.backgroundColor="white";
-			plansza.appendChild(tab1[i]);
-		}
 	}
 	
 	//Funkcja wywoływana do wyswietlania stanu komórki
