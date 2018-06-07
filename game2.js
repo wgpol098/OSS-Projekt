@@ -70,6 +70,11 @@ let r=0;
 	//Funkcja która działa po kliknięciu w przycisk start
 	start.onclick = function()
 	{
+		if(document.getElementById('ilosc').value>627)
+		{
+			alert("PODANO ZA DUŻĄ WARTOŚĆ!");
+			return 0;
+		}
 		if(r===0)
 		{
 			start.value="RESTART";
