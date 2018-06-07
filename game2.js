@@ -19,6 +19,13 @@
  //Licznik żywych i martwych elementów
  let licznik_zyw=0;
  let licznik_martw=627;
+
+
+//OGARNĄĆ TE CYKLE KOMÓREK PO CZYSZCZENIU
+
+
+
+
  
  
  //Interwały
@@ -31,6 +38,7 @@ let r=0;
 	//Utworzenie planszy
 	tworz_plansza();
 	zer_tab2();
+	zer_tab4();
 	
 	//Zdarzenie kliknięcia
 	document.querySelector(".container").addEventListener("click",dodaj);
@@ -61,6 +69,7 @@ let r=0;
 	res.onclick=function()
 	{
 		zer_tab2();
+		zer_tab4();
 		licznik=-1;
 		akt_stan();
 		clearInterval(Intgra);
@@ -357,6 +366,9 @@ let r=0;
 		{
 			tab2[i]=tab3[i];
 		}
+		
+		//Funkcja sprawdzająca ile cykli ma dana komórka
+		umieraj();
 		
 		//akt_stan();
 		//window.requestAnimationFrame(gra);

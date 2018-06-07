@@ -57,7 +57,7 @@
 	{
 		for(let i=0;i<627;i++)
 		{
-			if(tab2[i]===1||tab2[i]==2) tab4[i]++;
+			if(tab2[i]!==0) tab4[i]++;
 			else tab4[i]=0;
 			
 			if(tab4[i]===50)
