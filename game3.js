@@ -88,6 +88,11 @@ let r=0;
 			alert("PODANO ZA DUŻĄ WARTOŚĆ!");
 			return 0;
 		}
+		if(parseInt(document.getElementById('ilosc').value)<0)
+		{
+			alert("PODANO ZA MAŁĄ WARTOŚĆ!");
+			return 0;
+		}
 		if(r===0)
 		{
 			start.value="RESTART";
