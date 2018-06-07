@@ -11,6 +11,11 @@
 	background-color:blue;
 	width:150px;
 }
+#menu:hover
+{
+	background-color:red;
+	color:white;
+}
 #ilosc
 {
 	width:20%;
@@ -28,6 +33,7 @@
 #start:hover
 {
 	background-color:red;
+	color:white;
 }
 #stop
 {
@@ -49,6 +55,21 @@
 	padding-right:10px;
 	margin-left:10px;
 	background-color:blue;		
+}
+#back
+{
+	font-family: 'Play', sans-serif;
+	border-radius:10px;
+	padding:2px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-top:10px;
+	background-color:blue;	
+}
+#back:hover
+{
+	background-color:red;
+	color:white;	
 }
 .head
 {
@@ -100,9 +121,13 @@ body
 	font-family: 'Play', sans-serif;
 	color:white;
 }
-
 a
 {
 	text-decoration:none;
+}
+p
+{
+	padding:20px;
+	line-height:23px;
 }
 

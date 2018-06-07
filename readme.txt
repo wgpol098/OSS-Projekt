@@ -23,3 +23,5 @@
 //Stworzenie podstrony z informacjami o grze
 
 //Przygotowanie projektu do stworzenia planszy z trzema kolorami komórek
+
+//Stworzenie dzia³aj¹cej planszy z trzema kolorami 
