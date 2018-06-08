@@ -25,3 +25,7 @@
 //Przygotowanie projektu do stworzenia planszy z trzema kolorami komórek
 
 //Stworzenie dzia³aj¹cej planszy z trzema kolorami 
+
+//Po 50 cyklach komórki umieraj¹ ze staroœci
+
+//Kiedy komórki umr¹ jest koniec gry

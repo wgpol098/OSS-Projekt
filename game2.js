@@ -198,7 +198,13 @@ let r=0;
 			{
 				tab1[i].style.backgroundColor="white";
 				licznik_martw++;
-			}				
+			}	
+			
+			if(czy_zywe()==1) 
+			{
+				clearInterval(Intgra);
+				clearInterval(Intstan);	
+			}			
 		}
 		
 		//Liczniki

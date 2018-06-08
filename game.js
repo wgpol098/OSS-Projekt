@@ -67,3 +67,17 @@
 			}
 		}
 	}
+	
+	
+//Funkcja sprawdzająca czy są jeszcze jakieś żywe komórki
+//Wszystkie martwe zwraca 0
+//Jeste jakaś żywa zwraca 1
+
+	function czy_zywe()
+	{
+		for(let i=0;i<627;i++)
+		{
+			if(tab2[i]!=0) return 0;
+		}
+		return 1;
+	}

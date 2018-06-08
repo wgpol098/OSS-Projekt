@@ -8,7 +8,7 @@
  let k=0;
  //Tablica elementow
  let tab1=[];
- //Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
+ //Tablica zawierajaca stan komorki 0 - martwy 1 - zywy 2 - zywy
  let tab2=[];
  //Tablica temp
  let tab3=[];
@@ -218,6 +218,12 @@ let r=0;
 			{
 				tab1[i].style.backgroundColor="yellow";
 				licznik_zyw++;
+			}
+			
+			if(czy_zywe()==1) 
+			{
+				clearInterval(Intgra);
+				clearInterval(Intstan);	
 			}
 		}
 		
