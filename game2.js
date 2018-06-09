@@ -204,6 +204,7 @@ let r=0;
 			{
 				clearInterval(Intgra);
 				clearInterval(Intstan);	
+				r=0;
 			}			
 		}
 		
