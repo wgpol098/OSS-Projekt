@@ -1,11 +1,12 @@
  //Obiekt button-start,stop,wznow, czyść
  const start = document.getElementById('start');
  const stop = document.getElementById('stop');
- const res = document.getElementById('reset');
- //Dodanie zmiennej do liczenia w przycisku STOP
+ const res = document.getElementById('reset'); 
  
 //Tablice kolejno - Tablica divów z komórkami - Tablica zawierająca aktualny stan komórki - Tablica do przechowywania stanu komórki tmp - Licznik cykli
  let tab1=[],tab2=[],tab3=[],tab4=[],tab5=[];
+ 
+ //Dodanie zmiennej do liczenia w przycisku STOP
  let k=0;
  
  //Licznik kroków 
@@ -26,8 +27,9 @@ let r=0;
 	tworz_plansza();
 	zer_tab2();
 	zer_tab4();
+	zer_tab5();
 	
-	//Zdarzenie kliknięcia
+	//Zdarzenie kliknięcia na komórkę
 	document.querySelector(".container").addEventListener("click",dodaj);
 	
 	//Funkcja zmieniająca stan komórki po kliknięciu na żywy lub martwy
@@ -68,6 +70,7 @@ let r=0;
 	{
 		zer_tab2();
 		zer_tab4();
+		zer_tab5();
 		licznik=-1;
 		akt_stan();
 		clearInterval(Intgra);
@@ -77,32 +80,31 @@ let r=0;
 		document.getElementById('ilosc').value="";
 		r=0;
 	}
-	//Funkcja która działa po kliknięciu w przycisk start
+	//Funkcja która działa po kliknięciu w przycisk "START"
 	start.onclick = function()
 	{
+		//Jeżeli podana przez użytkownika ilość komórek do wylosowania jest większa, niż wielkość planszy to wyświetla alert i kończy działanie funkcji
 		if(document.getElementById('ilosc').value>627)
 		{
 			alert("PODANO ZA DUŻĄ WARTOŚĆ!");
 			return 0;
 		}
+		//Analogicznie jak wyżej z tym, że jeżeli użytkownik podał za małą wartość 
 		if(parseInt(document.getElementById('ilosc').value)<0)
 		{
 			alert("PODANO ZA MAŁĄ WARTOŚĆ!");
 			return 0;
 		}
+		//Jeżeli startujemy grę pierwszy raz
 		if(r===0)
 		{
-			start.value="RESTART";
-			//Zerowanie licznika
-			licznik=0;
-			//document.querySelector('.container').innerHTML="";
-			//tworz_plansza();
-			pocz_zywe();
-			//gra();
-			clearInterval(Intgra);
-			clearInterval(Intstan);
-			Intgra = window.setInterval (gra, 100);
-			Intstan = window.setInterval (akt_stan, 100);
+			start.value="RESTART"; //Wartość przycisku "START" zmieniamy na "RESTART"
+			licznik=0;	//Zerowanie licznika cykli
+			pocz_zywe(); //Wywołanie funkcji która losuje początkowe położenie komórek
+			clearInterval(Intgra); //Czyszczenie interwału
+			clearInterval(Intstan); //Czyszczenie interwału
+			Intgra = window.setInterval (gra, 100); //Stworznie nowego interwału, który liczy, które komórki będą żywe, a które martwe 
+			Intstan = window.setInterval (akt_stan, 100); //Stworznie nowego interwału wyświetlającego aktualne stany komórki
 		
 			if(k%2==1)
 			{
@@ -112,20 +114,16 @@ let r=0;
 			
 			r++;
 		}
+		//Jeśli funkcja jest odpalana minimum po raz drugi
 		else
 		{
-			start.value="RESTART";
-			//Zerowanie licznika
-			licznik=0;
-			//document.querySelector('.container').innerHTML="";
-			//tworz_plansza();
-			clearInterval(Intgra);
-			clearInterval(Intstan);
-			zer_tab2();
+			licznik=0; //Zerowanie licznika cykli
+			clearInterval(Intgra); //Czyszczenie interwału
+			clearInterval(Intstan); //Czyszczenie interwału
+			zer_tab2(); //Zerowanie tablicy zawierającej dane o tym czy komórka żyje, czy też nie 
 			gra();
 			akt_stan();
 			pocz_zywe();
-			//gra();
 			
 			Intgra = window.setInterval (gra, 100);
 			Intstan = window.setInterval (akt_stan, 100);
@@ -192,33 +190,39 @@ let r=0;
 	//Funkcja wywoływana do wyswietlania stanu komórki
 	function akt_stan()
 	{
+		//Ustawienie liczników martwych i żywych komórek na wartość 0
 		licznik_martw=0;
 		licznik_zyw=0;
-		//Plansza
+		//Pętla sprawdzająca czy dana komórka jest żywa czy martwa
+		//Pętla sprawdza jaki kolor ma div w którym znajduje się komórka 
 		for(let i=0;i<627;i++)
 		{
+			//Jeśli komórka jest martwa to kolor diva będzie równy 0 i zwiększa się licznik martwych komórek
 			if(tab2[i]==0)
 			{
 				tab1[i].style.backgroundColor="white";
 				licznik_martw++;
 			}
+			//Jeżeli komórka jest żywa i jest to komórka 1 typu to ustawia kolor diva na czerwony i zwiększa się licznik żywych komórek
 			if(tab2[i]==1)
 			{
 				tab1[i].style.backgroundColor="red";
 				licznik_zyw++;
 			}				
+			//Jeżeli komórka jest żywa i jest to komórka 2 typu to ustawia kolor diva na żółty i zwiększa się licznik żywych komórek
 			if(tab2[i]==2)
 			{
 				tab1[i].style.backgroundColor="yellow";
 				licznik_zyw++;
 			}
 			
+			//Funkcja sprawdzająca czy są jakiekolwiek żywe komórki
+			//Jeżeli wszystkie komórki umarły ( funcja zwraca 1 - błąd ) to kończym grę i czyścimy interwały 
 			if(czy_zywe()==1) 
 			{
 				clearInterval(Intgra);
 				clearInterval(Intstan);	
 				r=0;
-				
 			}
 		}
 		
@@ -237,7 +241,6 @@ let r=0;
 	//Funkcja zapetlajaca gre 
 	function gra()
 	{
-		//Rogi sprawdź lewą stronę
 		//Obliczanie ile żywych komórek jest wokół komórki
 		for(let i=0;i<627;i++)
 		{
@@ -452,7 +455,7 @@ let r=0;
 			}
 
 			
-			//Algorytm 
+			//Algorytm gry 
 			if(tab2[i]===0)
 			{
 				if(zr+zy==3)
@@ -480,7 +483,4 @@ let r=0;
 		
 		//Funkcja sprawdzająca ile cykli ma dana komórka
 		umieraj();
-		
-		//akt_stan();
-		//window.requestAnimationFrame(gra);
 	}
