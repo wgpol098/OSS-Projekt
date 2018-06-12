@@ -4,14 +4,9 @@
  const res = document.getElementById('reset');
  //Dodanie zmiennej do liczenia w przycisku STOP
  let k=0;
- //Tablica elementow
- let tab1=[];
- //Tablica zawierajaca stan komorki 0 - martwy 1 - zywy
- let tab2=[];
- //Tablica temp
- let tab3=[];
- //Tablica licząca ile cyklów żyje dana komórka
- let tab4=[];
+ 
+ //Tablice kolejno - Tablica divów z komórkami - Tablica zawierająca aktualny stan komórki - Tablica do przechowywania stanu komórki tmp - Licznik cykli
+ let tab1=[],tab2=[],tab3=[],tab4=[],tab5=[];
  
  //Licznik kroków 
  let licznik=0;

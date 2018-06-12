@@ -26,6 +26,13 @@
 			tab4[i]=0;
 		}
 	}
+	function zer_tab5()
+	{
+		for(let i=0;i<627;i++)
+		{
+			tab5[i]=0;
+		}
+	}
 	
 	
 	//Funkcja tworząca divy, czyli plansze
@@ -68,6 +75,26 @@
 		}
 	}
 	
+//Funkcja licząca ile cykli komórka była żywa
+
+	function dl_zycia()
+	{
+		for(let i=0;i<627;i++)
+		{
+			if(tab2[i]!=0) tab5[i]++;
+		}
+	}
+//Funkcja licząca srednią długość życia komórki
+
+	function sr_dl_zycia()
+	{
+		let srednia=0;
+		for(let i=0;i<627;i++)
+		{
+			srednia+=tab5[i];
+		}
+		return parseInt(Math.floor(srednia/627));
+	}
 	
 //Funkcja sprawdzająca czy są jeszcze jakieś żywe komórki
 //Wszystkie martwe zwraca 0
