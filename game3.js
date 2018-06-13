@@ -95,6 +95,8 @@ let r=0;
 			alert("PODANO ZA MAŁĄ WARTOŚĆ!");
 			return 0;
 		}
+		
+		zer_tab5();
 		//Jeżeli startujemy grę pierwszy raz
 		if(r===0)
 		{
@@ -193,6 +195,7 @@ let r=0;
 		//Ustawienie liczników martwych i żywych komórek na wartość 0
 		licznik_martw=0;
 		licznik_zyw=0;
+		dl_zycia();
 		//Pętla sprawdzająca czy dana komórka jest żywa czy martwa
 		//Pętla sprawdza jaki kolor ma div w którym znajduje się komórka 
 		for(let i=0;i<627;i++)
@@ -220,6 +223,7 @@ let r=0;
 			//Jeżeli wszystkie komórki umarły ( funcja zwraca 1 - błąd ) to kończym grę i czyścimy interwały 
 			if(czy_zywe()==1) 
 			{
+				//alert('tak');
 				clearInterval(Intgra);
 				clearInterval(Intstan);	
 				r=0;
@@ -236,6 +240,9 @@ let r=0;
 		
 		const licz_zywe=document.querySelector('.zywe');
 		licz_zywe.innerText="Żywe: "+licznik_zyw;
+		
+		const licz_srednia=document.querySelector('.srednia');
+		licz_srednia.innerText="Średnia: "+sr_dl_zycia();
 	}
 	
 	//Funkcja zapetlajaca gre 

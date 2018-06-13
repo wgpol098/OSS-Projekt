@@ -34,6 +34,7 @@ let r=0;
 	tworz_plansza();
 	zer_tab2();
 	zer_tab4();
+	zer_tab5();
 	
 	//Zdarzenie kliknięcia
 	document.querySelector(".container").addEventListener("click",dodaj);
@@ -65,6 +66,7 @@ let r=0;
 	{
 		zer_tab2();
 		zer_tab4();
+		zer_tab5();
 		licznik=-1;
 		akt_stan();
 		clearInterval(Intgra);
@@ -86,6 +88,8 @@ let r=0;
 			alert("PODANO ZA MAŁĄ WARTOŚĆ!");
 			return 0;
 		}
+		
+		zer_tab5();
 		if(r===0)
 		{
 			start.value="RESTART";
@@ -181,6 +185,7 @@ let r=0;
 	{
 		licznik_martw=0;
 		licznik_zyw=0;
+		dl_zycia();
 		//Plansza
 		for(let i=0;i<627;i++)
 		{
@@ -213,6 +218,9 @@ let r=0;
 		
 		const licz_zywe=document.querySelector('.zywe');
 		licz_zywe.innerText="Żywe: "+licznik_zyw;
+		
+		const licz_srednia=document.querySelector('.srednia');
+		licz_srednia.innerText="Średnia: "+sr_dl_zycia();
 	}
 	
 	//Funkcja zapetlajaca gre 

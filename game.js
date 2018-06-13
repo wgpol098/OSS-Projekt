@@ -42,9 +42,11 @@
 		const licz=document.querySelector('.licznik');
 		const licz_zywe=document.querySelector('.zywe');
 		const licz_martwe=document.querySelector('.martwe');
+		const licz_srednia=document.querySelector('.srednia');
 		licz_zywe.innerText="Żywe: "+licznik_zyw;
 		licz_martwe.innerText="Martwe: "+licznik_martw;
 		licz.innerText="Krok: "+licznik;
+		licz_srednia.innerText="Średnia: 0";
 		
 		//Plansza
 		const plansza = document.querySelector('.container');
