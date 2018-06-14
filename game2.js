@@ -19,12 +19,11 @@
 	
 	document.querySelector(".container").addEventListener("click",dodaj); //Zdarzenie wywoływane po kliknięciu na jakiś div w divie o klasie "container"
 	
-	//Funkcja zmieniająca stan komórki po kliknięciu na żywy lub martwy
-	function dodaj(e)
+	
+	function dodaj(e) //Funkcja zmieniająca stan komórki po kliknięciu na nią - na żywy lub martwy
 	{
-		//Jeżeli komórka, którą klikneliśmy była martwa to stanie się żywa
-		let x=parseInt(e.target.id);
-		if(tab2[x]===0)
+		let x=parseInt(e.target.id); //Przypisujemy zmiennej x id komórki, którą kliknęliśmy, jej id jest zwyczajnie jej numerem
+		if(tab2[x]===0) //Jeśli komórka jest martwa to ustawiamy jej stan na żywą i odświeżamy planszę wywołując funkcję akt_stan()
 		{
 			if(licznik===0) licznik=-1;
 			else licznik--;
@@ -32,8 +31,7 @@
 			akt_stan();
 			
 		}
-		//Jeżeli komórka, którą kliknęliśmy była żywa to staje się martwa
-		else
+		else //Jeżeli komórka, którą kliknęliśmy jest żywa to ustawiamy jej stan na martwy i odświeżamy planszę wywołując funkcję akt_stan()
 		{
 			if(licznik===0) licznik=-1;
 			else licznik--;
@@ -41,22 +39,23 @@
 			akt_stan();
 		}
 	}
-	//Funkcja resetująca planszę
-	res.onclick=function()
-	{
+	
+	res.onclick=function() //Funkcja wywoływana przy kliknięciu w przycisk RESET
+	{	
+		//Kolejno zerowanie tablic - Stan komórek na martwy - Ilość cykli życia komórki na 0 - Ilość cykli życia komórki na 0
 		zer_tab2();
 		zer_tab4();
 		zer_tab5();
 		licznik=-1;
-		akt_stan();
-		clearInterval(Intgra);
-		clearInterval(Intstan);
-		start.value="START";
-		stop.value="STOP";
-		document.getElementById('ilosc').value="";
+		akt_stan(); //Wywołanie funkcji, która odświeży planszę i stan znajdujących się na niej komórek 
+		clearInterval(Intgra); //Wyczyszczenie interwału wywołującego funkcję, która ustawia aktualny stan komórki
+		clearInterval(Intstan); //Wyczyszczenie interwału wywołującego funkcję, która ustawia aktualny stan komórki na planszy
+		start.value="START"; //Ustawiamy tekst dla przycisku START na START
+		stop.value="STOP"; //Ustawiamy tekst dla przycisku STOP na STOP
+		document.getElementById('ilosc').value=""; //Czyszczenie inputa w którym użytkownik wprowadza ile komórek, ma być losowanych
 	}
-	//Funkcja która działa po kliknięciu w przycisk start
-	start.onclick = function()
+	
+	start.onclick = function() //Funkcja która wywoływana jest po kliknięciu w przycisk START
 	{
 		if(document.getElementById('ilosc').value>627)
 		{
@@ -75,10 +74,7 @@
 			start.value="RESTART";
 			//Zerowanie licznika
 			licznik=0;
-			//document.querySelector('.container').innerHTML="";
-			//tworz_plansza();
 			pocz_zywe();
-			//gra();
 			clearInterval(Intgra);
 			clearInterval(Intstan);
 			Intgra = window.setInterval (gra, 100);
@@ -97,16 +93,13 @@
 			start.value="RESTART";
 			//Zerowanie licznika
 			licznik=0;
-			//document.querySelector('.container').innerHTML="";
-			//tworz_plansza();
 			clearInterval(Intgra);
 			clearInterval(Intstan);
 			zer_tab2();
 			gra();
 			akt_stan();
 			pocz_zywe();
-			//gra();
-			
+
 			Intgra = window.setInterval (gra, 100);
 			Intstan = window.setInterval (akt_stan, 100);
 		
@@ -120,48 +113,42 @@
 		}
 	}
 	
-	//Funkcja która działa po kliknięciu w przycisk stop
-	stop.onclick = function()
+	stop.onclick = function() //Funkcja wywoływana po kliknięciu w przycisk STOP/WZNÓW
 	{
-		if(k%2===0)
+		if(k%2===0) //Jeśli przycisk jest przyciskiem STOP to czyścimy interwały wywołujące funkcje sprawdzające stan komórek i uaktualnianie planszy
 		{
 			clearInterval(Intgra);
 			clearInterval(Intstan);
-			stop.value="WZNÓW";
+			stop.value="WZNÓW"; //Zmieniamy tekst na przycisku STOP na WZNÓW
 			k++;
 		}
-		else
+		else //Jeśli przycisk jest przyciskiem WZNÓW to startujemy interwały wywołujące funkcje sprawdzające stan komórek i uaktualnienie planszy
 		{
 			Intgra = window.setInterval (gra, 100);
 			Intstan = window.setInterval (akt_stan, 100);
-			stop.value="STOP";
+			stop.value="STOP"; //Zmieniamy tekst na przycisku WZNÓW na STOP
 			k++;
 		}
 	}
 	
-	//Funkcja tworzaca poczatkowe polozenie zywych komorek
-	function pocz_zywe()
+	function pocz_zywe() //Funkcja odpowiedzialna za ustawienie początkowego położenia żywych komórek
 	{
-		let ilosc = document.getElementById('ilosc');
-		
-		//Dodawanie żywych komórek
-		for(let i=0;i<ilosc.value;i++)
+		const ilosc = document.getElementById('ilosc'); //Stała przechowująca element, w który wpisujemy ilość losowanych komórek
+		for(let i=0;i<ilosc.value;i++) //Dodajemy ilość żywych komórek do planszy jaką podał użytkownik
 		{
-			let x = losuj_zywa();
-			if(tab2[x]==1) i--;
-			else
+			let x = losuj_zywa(); //Przypisanie zmiennej x tego co zwraca funkcja odpowiedzialna za losowanie liczb z przedziału 0-627
+			if(tab2[x]==1) i--; //Jeśli komórka jest żywa odejmujemy krok i będziemy losować jeszcze raz
+			else //W przeciwnym wypadku ustawiamy stan komórki na żywy i kolor tła elementu odpowiadającemu komórce na niebiski
 			{
 				tab2[x]=1;
 				tab1[x].style.backgroundColor="blue";
 			}
 		}	
-		//Licznik żywych komórek
-		licznik_zyw=licznik_zyw+ilosc;
-		licznik_martw=licznik_martw-ilosc;
+		licznik_zyw=licznik_zyw+ilosc; //Dodajemy do licznika komórek żywych ilość wylosowanych komórek
+		licznik_martw=licznik_martw-ilosc; //Odejmujemy od licznika żywych komórek ilość wylosowanych komórek
 	}
 	
-	//Funkcja, która wyświetla aktualny stan komórki
-	function akt_stan()
+	function akt_stan() //Funkcja, która wyświetla aktualny stan komórki
 	{
 		licznik_martw=0; //Licznik martwych komórek ustawiamy na 0
 		licznik_zyw=0; //Licznik żywych komórek ustawiamy na 0
@@ -200,8 +187,7 @@
 		licz_srednia.innerText="Średnia: "+sr_dl_zycia();
 	}
 	
-	//Funkcja odpowiedzialna za sprawdzanie stanu komórki w kolejnym cyklu
-	function gra()
+	function gra() //Funkcja odpowiedzialna za sprawdzanie stanu komórki w kolejnym cyklu
 	{
 		//Obliczanie ile żywych komórek sąsiaduje z daną komórką 
 		for(let i=0;i<627;i++)
