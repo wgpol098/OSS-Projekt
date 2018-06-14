@@ -1,43 +1,23 @@
- //Obiekt button-start,stop,wznow, czyść
+ //Przypisanie do stałych "buttonów" - START, STOP, RESET
  const start = document.getElementById('start');
  const stop = document.getElementById('stop');
  const res = document.getElementById('reset');
- //Dodanie zmiennej do liczenia w przycisku STOP
- let k=0;
- 
+ let k=0;  //Zmienna przechowuje wartości i dzięki niej po wciśnięciu przycisku STOP zmienia on napis na WZNÓW i odwrotnie
  //Tablice kolejno - Tablica divów z komórkami - Tablica zawierająca aktualny stan komórki - Tablica do przechowywania stanu komórki tmp - Licznik cykli
  let tab1=[],tab2=[],tab3=[],tab4=[],tab5=[];
- 
- //Licznik kroków 
- let licznik=0;
- 
- //Licznik żywych i martwych elementów
- let licznik_zyw=0;
- let licznik_martw=627;
+ let licznik=0;  //Deklaracja licznika cykli
+ let licznik_zyw=0; //Deklaracja licznika żywych elementów
+ let licznik_martw=627; //Deklaracja licznika martwych elementów 
+ let Intgra; //Deklaracja zmiennej, która będzie interwałem, który będzie odpowiadał za liczenie, czy dana komórka jest żywa czy martwa
+ let Intstan; //Deklaracja zmiennej, która będzie interwałem, który będzie odpowiadał za wyświetlanie aktualnego stanu komórek i wszystkich danych w liczniku 
+ let r=0; //Zmienna przechowująca informacje, czy plansza jest uruchamiana po raz pierwszy, czy też restartowana 
 
-
-//OGARNĄĆ TE CYKLE KOMÓREK PO CZYSZCZENIU
-
-
-
-
- 
- 
- //Interwały
- let Intgra;
- let Intstan;
+	tworz_plansza(); //Wywołanie funkcji tworzącej planszę 
+	zer_tab2(); //Wywołanie funkcji zerującej stan komórki
+	zer_tab4(); //Wywołanie funkcji zerującej ilość cykli życia komórki
+	zer_tab5(); //Wywołanie funkcji zerującej ile cykli żyła dana komórka
 	
-//Zmienna przechowująca dane o tym, czy plansza jest startowana czy restartowana
-let r=0;
-
-	//Utworzenie planszy
-	tworz_plansza();
-	zer_tab2();
-	zer_tab4();
-	zer_tab5();
-	
-	//Zdarzenie kliknięcia
-	document.querySelector(".container").addEventListener("click",dodaj);
+	document.querySelector(".container").addEventListener("click",dodaj); //Zdarzenie wywoływane po kliknięciu na jakiś div w divie o klasie "container"
 	
 	//Funkcja zmieniająca stan komórki po kliknięciu na żywy lub martwy
 	function dodaj(e)
@@ -180,61 +160,54 @@ let r=0;
 		licznik_martw=licznik_martw-ilosc;
 	}
 	
-	//Funkcja wywoływana do wyswietlania stanu komórki
+	//Funkcja, która wyświetla aktualny stan komórki
 	function akt_stan()
 	{
-		licznik_martw=0;
-		licznik_zyw=0;
-		dl_zycia();
-		//Plansza
+		licznik_martw=0; //Licznik martwych komórek ustawiamy na 0
+		licznik_zyw=0; //Licznik żywych komórek ustawiamy na 0
+		dl_zycia(); //Wywołanie funkcji dodającej wartość 1 do aktualnej sumy, jeśli komórka jest żywa 
+		//Ustawianie aktualnego stanu komórek na planszy
 		for(let i=0;i<627;i++)
 		{
-			if(tab2[i]==1)
+			if(tab2[i]==1) //Jeśli komórka jest żywa to elementowi odpowiadającemu ustaw kolor niebieski i ilość żywych komórek zwiększ o 1
 			{
 				tab1[i].style.backgroundColor="blue";
 				licznik_zyw++;
 			}				
-			else
+			else //Jeśli komórka jest martwa to elementowi odpowiadającemu ustaw kolor biały i licznik martwych zwiększ o 1
 			{
 				tab1[i].style.backgroundColor="white";
 				licznik_martw++;
 			}	
 			
-			if(czy_zywe()==1) 
+			if(czy_zywe()==1) //Wywołanie funkcji, która sprawdza, czy na planszy są żywe komórki, jeśli nie ma to czyścimy interwały 
 			{
 				clearInterval(Intgra);
 				clearInterval(Intstan);	
 				r=0;
 			}			
 		}
-		
-		//Liczniki
+		//Licznik cyklu zwiększamy o 1
 		licznik++;
+		//Do stałych przypisujemy odpowiednie elementy z dookumentu HTML, a następnie zmienamy im tekst, by wyświetlały one aktualne dane 
 		const licz=document.querySelector('.licznik');
-		licz.innerText="Krok "+licznik;
-		
 		const licz_martwe=document.querySelector('.martwe');
-		licz_martwe.innerText="Martwe: "+licznik_martw;
-		
 		const licz_zywe=document.querySelector('.zywe');
-		licz_zywe.innerText="Żywe: "+licznik_zyw;
-		
 		const licz_srednia=document.querySelector('.srednia');
+		licz.innerText="Krok "+licznik;
+		licz_martwe.innerText="Martwe: "+licznik_martw;
+		licz_zywe.innerText="Żywe: "+licznik_zyw;
 		licz_srednia.innerText="Średnia: "+sr_dl_zycia();
 	}
 	
-	//Funkcja zapetlajaca gre 
+	//Funkcja odpowiedzialna za sprawdzanie stanu komórki w kolejnym cyklu
 	function gra()
 	{
-		//Rogi sprawdź lewą stronę
-		//Obliczanie ile żywych komórek jest wokół komórki
+		//Obliczanie ile żywych komórek sąsiaduje z daną komórką 
 		for(let i=0;i<627;i++)
 		{
-		
-			let zywa=0;
-			
-			//Lewy gorny rog
-			if(i===0)
+			let zywa=0; //Ustawiamy licznik żywych sąsiadów na 0
+			if(i===0) //Jeśli sprawdzana komórka jest w lewym górnym roku
 			{
 				if(tab2[1]==1) zywa++;
 				if(tab2[33]==1) zywa++;
@@ -247,139 +220,127 @@ let r=0;
 			}
 			else
 			{
-			//Prawy górny róg
-			if(i==32)
-			{
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i+33]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[33]==1) zywa++;
-				if(tab2[594]==1) zywa++;
-				if(tab2[594+32]==1) zywa++;
-				if(tab2[594+31]==1) zywa++;
-			}
-			else
-			{
-			//Prawy dolny róg
-			if(i==594)
-			{
-				if(tab2[i+1]==1) zywa++;
-				if(tab2[i-33]==1) zywa++;
-				if(tab2[i-32]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[32]==1) zywa++;
-				if(tab2[1]==1) zywa++;
-				if(tab2[i-1]==1) zywa++;
-			}
-			else
-			{
-			//Lewy dolny róg
-			if(i==626)
-			{
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i-33]==1) zywa++;
-				if(tab2[i-34]==1) zywa++;
-				if(tab2[i-32]==1) zywa++;
-				if(tab2[i-32-33]==1) zywa++;
-				if(tab2[0]==1) zywa++;
-				if(tab2[32]==1) zywa++;
-				if(tab2[31]==1) zywa++;
-			}
-			else
-			{
-			if(i!==0&&i<32)
-			{
-				if(tab2[593+i]==1) zywa++;
-				if(tab2[594+i]==1) zywa++;
-				if(tab2[595+i]==1) zywa++;
-				if(tab2[i-1]==1) zywa++;
-				if(tab2[i+1]==1) zywa++;
-				if(tab2[i+32]==1) zywa++;
-				if(tab2[i+33]==1) zywa++;
-				if(tab2[i+34]==1) zywa++;				
-			}
-			else
-			{
-				//Sprawdź lepiej to
-				if(i>594)
+				if(i==32) //Jeśli sprawdzana komórka jest w prawym górnym rogu
 				{
-					if(tab2[i-34]==1) zywa++;
-					if(tab2[i-33]==1) zywa++;
-					if(tab2[i-32]==1) zywa++;
 					if(tab2[i-1]==1) zywa++;
-					if(tab2[i+1]==1) zywa++;
-					if(tab2[i%33]==1) zywa++;
-					if(tab2[i%33+1]==1) zywa++;
-					if(tab2[i%33-1]==1) zywa++;						
+					if(tab2[i+33]==1) zywa++;
+					if(tab2[i+32]==1) zywa++;
+					if(tab2[0]==1) zywa++;
+					if(tab2[33]==1) zywa++;
+					if(tab2[594]==1) zywa++;
+					if(tab2[594+32]==1) zywa++;
+					if(tab2[594+31]==1) zywa++;
 				}
 				else
 				{
-					if(i%33==32)
+					if(i==594) //Jeśli sprawdzana komórka jest w prawym dolnym rogu
 					{
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i-34]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
 						if(tab2[i+1]==1) zywa++;
+						if(tab2[i-33]==1) zywa++;
 						if(tab2[i-32]==1) zywa++;
-						if(tab2[i-32-33]==1) zywa++;
+						if(tab2[0]==1) zywa++;
+						if(tab2[i+32]==1) zywa++;
+						if(tab2[32]==1) zywa++;
+						if(tab2[1]==1) zywa++;
+						if(tab2[i-1]==1) zywa++;
 					}
-					if(i%33===0)
+					else
 					{
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i+34]==1) zywa++;
-						if(tab2[i-32]==1) zywa++;
-						if(tab2[i+1]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
-						if(tab2[i+32+33]==1) zywa++;
-					}
-					if(i%33!==0&&i%33!=32)
-					{
-						if(tab2[i-34]==1) zywa++;
-						if(tab2[i-33]==1) zywa++;
-						if(tab2[i-32]==1) zywa++;
-						if(tab2[i-1]==1) zywa++;
-						if(tab2[i+1]==1) zywa++;
-						if(tab2[i+32]==1) zywa++;
-						if(tab2[i+33]==1) zywa++;
-						if(tab2[i+34]==1) zywa++;
-					}				
-				}
+						if(i==626) //Jeśli sprwadzana komórka jest w lewym dolnym rogu
+						{
+							if(tab2[i-1]==1) zywa++;
+							if(tab2[i-33]==1) zywa++;
+							if(tab2[i-34]==1) zywa++;
+							if(tab2[i-32]==1) zywa++;
+							if(tab2[i-32-33]==1) zywa++;
+							if(tab2[0]==1) zywa++;
+							if(tab2[32]==1) zywa++;
+							if(tab2[31]==1) zywa++;
+						}
+						else
+						{	
+							if(i!==0&&i<32) //Jeśli sprawdzana komórka znajduje się w pierwszym rzędzie od góry
+							{
+								if(tab2[593+i]==1) zywa++;
+								if(tab2[594+i]==1) zywa++;
+								if(tab2[595+i]==1) zywa++;
+								if(tab2[i-1]==1) zywa++;
+								if(tab2[i+1]==1) zywa++;
+								if(tab2[i+32]==1) zywa++;
+								if(tab2[i+33]==1) zywa++;
+								if(tab2[i+34]==1) zywa++;				
+							}
+							else
+							{
+								if(i>594) //Jeśli sprawdzana komórka znajduje się w ostatnim rzędzie od góry
+								{
+									if(tab2[i-34]==1) zywa++;
+									if(tab2[i-33]==1) zywa++;
+									if(tab2[i-32]==1) zywa++;
+									if(tab2[i-1]==1) zywa++;
+									if(tab2[i+1]==1) zywa++;
+									if(tab2[i%33]==1) zywa++;
+									if(tab2[i%33+1]==1) zywa++;
+									if(tab2[i%33-1]==1) zywa++;						
+								}
+								else
+								{
+									if(i%33==32) //Jeśli sprawdzana komórka znajduje się po prawej stronie planszy
+									{
+										if(tab2[i-33]==1) zywa++;
+										if(tab2[i+33]==1) zywa++;
+										if(tab2[i-34]==1) zywa++;
+										if(tab2[i+32]==1) zywa++;
+										if(tab2[i-1]==1) zywa++;
+										if(tab2[i+1]==1) zywa++;
+										if(tab2[i-32]==1) zywa++;
+										if(tab2[i-32-33]==1) zywa++;
+									}
+									if(i%33===0) //Jeśli sprawdzana komórka znajduje się po lewej stronie planszy
+									{
+										if(tab2[i-33]==1) zywa++;
+										if(tab2[i+33]==1) zywa++;
+										if(tab2[i+34]==1) zywa++;
+										if(tab2[i-32]==1) zywa++;
+										if(tab2[i+1]==1) zywa++;
+										if(tab2[i+32]==1) zywa++;
+										if(tab2[i-1]==1) zywa++;
+										if(tab2[i+32+33]==1) zywa++;
+									}
+									//Jeśli sprawdzana komórka nie znajduje się na skraju planszy
+									if(i%33!==0&&i%33!=32)
+									{
+										if(tab2[i-34]==1) zywa++;
+										if(tab2[i-33]==1) zywa++;
+										if(tab2[i-32]==1) zywa++;
+										if(tab2[i-1]==1) zywa++;
+										if(tab2[i+1]==1) zywa++;
+										if(tab2[i+32]==1) zywa++;
+										if(tab2[i+33]==1) zywa++;
+										if(tab2[i+34]==1) zywa++;
+									}				
+								}
 		
-			}
-			}
-			}
-			}
-			}
-
-			
-			//reguły
-			if(tab2[i]===0)
+							}
+						}
+					}
+				}
+			}			
+			//Reguły dla gry w życie, dane zapisujemy w tymczasowej tablicy tab3
+			if(tab2[i]===0) //Jeśli komórka jest martwa i ma trzech żywych sąsiadów to staje się ona żywa, w przeciwnym razie jest martwa
 			{
 				if(zywa==3) tab3[i]=1;
 				else tab3[i]=0;
 			}
-			else
+			else //Jeśli komórka jest żywa i ma 2 lub 3 żywych sąsiadów to pozostaje ona żywa, w przeciwnym razie staje się martwa 
 			{
 				if(zywa==3||zywa==2) tab3[i]=1;
 				else tab3[i]=0;
 			}
 		}
-		
-		//Kopiowanie do tab2
-		for(let i=0;i<627;i++)
+		for(let i=0;i<627;i++) //Kopiujemy dane z tablicy tymczasowej do tablicy przechowującej stan komórek
 		{
 			tab2[i]=tab3[i];
 		}
-		
-		//Funkcja sprawdzająca ile cykli ma dana komórka
-		umieraj();
-		
-		//akt_stan();
-		//window.requestAnimationFrame(gra);
+		umieraj(); //Wywołanie funkcji sprawdzającej ile cykli żyje dana komórka, jeśli zyje 50 cykli to zmienia jej stan na martwy
 	}
