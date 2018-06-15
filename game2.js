@@ -16,9 +16,7 @@
 	zer_tab2(); //Wywołanie funkcji zerującej stan komórki
 	zer_tab4(); //Wywołanie funkcji zerującej ilość cykli życia komórki
 	zer_tab5(); //Wywołanie funkcji zerującej ile cykli żyła dana komórka
-	
 	document.querySelector(".container").addEventListener("click",dodaj); //Zdarzenie wywoływane po kliknięciu na jakiś div w divie o klasie "container"
-	
 	
 	function dodaj(e) //Funkcja zmieniająca stan komórki po kliknięciu na nią - na żywy lub martwy
 	{
@@ -167,8 +165,7 @@
 				r=0;
 			}			
 		}
-		//Licznik cyklu zwiększamy o 1
-		licznik++;
+		licznik++; //Licznik cyklu zwiększamy o 1
 		//Do stałych przypisujemy odpowiednie elementy z dookumentu HTML, a następnie zmienamy im tekst, by wyświetlały one aktualne dane 
 		const licz=document.querySelector('.licznik');
 		const licz_martwe=document.querySelector('.martwe');
@@ -182,8 +179,7 @@
 	
 	function gra() //Funkcja odpowiedzialna za sprawdzanie stanu komórki w kolejnym cyklu
 	{
-		//Obliczanie ile żywych komórek sąsiaduje z daną komórką 
-		for(let i=0;i<627;i++)
+		for(let i=0;i<627;i++) //Obliczanie ile żywych komórek sąsiaduje z daną komórką 
 		{
 			let zywa=0; //Ustawiamy licznik żywych sąsiadów na 0
 			if(i===0) //Jeśli sprawdzana komórka jest w lewym górnym roku
@@ -286,8 +282,7 @@
 										if(tab2[i-1]==1) zywa++;
 										if(tab2[i+32+33]==1) zywa++;
 									}
-									//Jeśli sprawdzana komórka nie znajduje się na skraju planszy
-									if(i%33!==0&&i%33!=32)
+									if(i%33!==0&&i%33!=32) //Jeśli sprawdzana komórka nie znajduje się na skraju planszy
 									{
 										if(tab2[i-34]==1) zywa++;
 										if(tab2[i-33]==1) zywa++;
