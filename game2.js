@@ -1,7 +1,7 @@
  //Przypisanie do stałych "buttonów" - START, STOP, RESET
- const start = document.getElementById('start');
- const stop = document.getElementById('stop');
- const res = document.getElementById('reset');
+ const start = document.getElementById("start");
+ const stop = document.getElementById("stop");
+ const res = document.getElementById("reset");
  let k=0;  //Zmienna przechowuje wartości i dzięki niej po wciśnięciu przycisku STOP zmienia on napis na WZNÓW i odwrotnie
  //Tablice kolejno - Tablica divów z komórkami - Tablica zawierająca aktualny stan komórki - Tablica do przechowywania stanu komórki tmp - Licznik cykli
  let tab1=[],tab2=[],tab3=[],tab4=[],tab5=[];
@@ -57,58 +57,51 @@
 	
 	start.onclick = function() //Funkcja która wywoływana jest po kliknięciu w przycisk START
 	{
-		if(document.getElementById('ilosc').value>627)
+		if(document.getElementById('ilosc').value>627) //Jeżeli użytkownik poda za dużą liczbę komórek to wyświetla się alert
 		{
 			alert("PODANO ZA DUŻĄ WARTOŚĆ!");
-			return 0;
+			return 0; //Funkcja zwraca wartość, żeby zakończyć swoje działanie 
 		}
-		if(parseInt(document.getElementById('ilosc').value)<0)
+		if(parseInt(document.getElementById('ilosc').value)<0) //Jeżeli użytkownik poda za małą liczbę komórek to wyświetla się alert
 		{
 			alert("PODANO ZA MAŁĄ WARTOŚĆ!");
-			return 0;
+			return 0; //Funkcja zwraca wartość, żeby zakończyć swoje działanie 
 		}
 		
-		zer_tab5();
-		if(r===0)
+		zer_tab5(); //Wywołanie funkcji zerującej średnią ilość życia komórki
+		if(r===0) //Jeżeli funkcja wywoływana jest po raz pierwszy
 		{
-			start.value="RESTART";
-			//Zerowanie licznika
-			licznik=0;
-			pocz_zywe();
-			clearInterval(Intgra);
-			clearInterval(Intstan);
-			Intgra = window.setInterval (gra, 100);
-			Intstan = window.setInterval (akt_stan, 100);
-		
-			if(k%2==1)
+			start.value="RESTART"; //Ustawienie tekstu w przycisku START na RESTART
+			licznik=0; //Zerowanie licznika cykli komórek
+			pocz_zywe(); //Wywłanie funkcji losującej i ustawiającej ilość żywych komórki podane przez użytkownika
+			clearInterval(Intgra); //Czyszczenie interwału odpowiadającego za sprawdzanie stanu komórek w następnym cyklu 
+			clearInterval(Intstan); //Czyszczenie interwału odpowiadającego za pokazywanie aktualnego stanu komórek
+			Intgra = window.setInterval (gra, 100); //Przypisanie do zmiennej interwału wywołującego funkcję gra
+			Intstan = window.setInterval (akt_stan, 100); //Przypisanie do zmiennej interwału wywołującego funckję akt_stan
+			if(k%2==1) //Jeśli k jest nieparzyste to napis na przycisku STOP będzie STOP
 			{
 				stop.value="STOP";
 				k++;
 			}
-			
 			r++;
 		}
-		else
+		else //Kiedy funkcja wywoływana jest więcej niż pierwszy raz
 		{
-			start.value="RESTART";
-			//Zerowanie licznika
-			licznik=0;
-			clearInterval(Intgra);
-			clearInterval(Intstan);
-			zer_tab2();
-			gra();
-			akt_stan();
-			pocz_zywe();
-
-			Intgra = window.setInterval (gra, 100);
-			Intstan = window.setInterval (akt_stan, 100);
-		
-			if(k%2==1)
+			start.value="RESTART"; //Ustawienie tekstu w przycisku START na RESTART
+			licznik=0; //Zerowanie licznika cykli komórek
+			clearInterval(Intgra); //Czyszczenie interwału odpowiadającego za sprawdzanie stanu komórek w następnym cyklu 
+			clearInterval(Intstan); //Czyszczenie interwału odpowiadającego za pokazywanie aktualnego stanu komórek
+			zer_tab2(); //Wywołanie komórki zerującej tablicę, w której przechowywany jest aktualny stan komórki
+			gra(); //Wywołanie funkcji sprawdzającej jaki stan mają komórki w następnym cyklu
+			akt_stan(); //Wywołanie funkcji pokazującej aktualny stan komórek
+			pocz_zywe(); //Wywołanie funkcji która losuje żywe komórki na planszy 
+			Intgra = window.setInterval (gra, 100); //Przypisanie do zmiennej interwału wywołującego funkcję gra
+			Intstan = window.setInterval (akt_stan, 100); //Przypisanie do zmiennej interwału wywołującego funckję akt_stan
+			if(k%2==1) //Jeśli k jest nieparzyste to napis na przycisku STOP będzie STOP
 			{
 				stop.value="STOP";
 				k++;
 			}
-			
 			r++;
 		}
 	}
