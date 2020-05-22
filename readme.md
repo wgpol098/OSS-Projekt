@@ -1,31 +1,13 @@
-//Zrobiłem planszę do gry i algorytm który oblicza czy komórka jest żywa czy martwa 
+<h1>The Game of Life</h1>
 
-//Dodanie tła, dodanie nowej czcionki, stworzenie i dodanie licznika kroków , dodanie przycisku STOP
 
-//Przycisk STOP po wciśnięciu staje się przyciskiem WZNÓW
+<h2>Rules</h2>
 
-//Wyświetlanie planszy przed rozpoczęciem gry
+<ul><li>A dead cell that has exactly 3 living neighbors becomes alive in the next unit of time (born)</li>
+  <li>A living cell with 2 or 3 living neighbors remains alive; at a different number of neighbors dies</li>
+  <li>the cell can be alive for up to 50 cycles</li>
+</ul>
 
-//Dodano funckję do zerowania tablicy w której podane jest czy komórka jest martwa, czy żywa
+<h2>Try It!</h2>
 
-//Kliknięcie na element zmienia wartość komórki na żywa/martwa
-
-//Naprawiony bug z klawiszem WZNÓW
-
-//Naprawione licznienie kroków 
-
-//Dodano przycisk CZYŚĆ
-
-//Dodano funkcję do przycisku CZYŚĆ
-
-//Dodawanie licznika zywych i martwych komorek
-
-//Stworzenie podstrony z informacjami o grze
-
-//Przygotowanie projektu do stworzenia planszy z trzema kolorami komórek
-
-//Stworzenie działającej planszy z trzema kolorami 
-
-//Po 50 cyklach komórki umierają ze starości
-
-//Kiedy komórki umrą jest koniec gry
+https://wgpol098.github.io/OSS-Projekt/
